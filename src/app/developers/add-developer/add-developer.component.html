@@ -1,0 +1,42 @@
+
+  <h3>Add Developer Account</h3>
+
+  <form [formGroup]="developerForm" (ngSubmit)="developerForm.valid && onSubmit()" class="tp-form" style="text-align: center;" autocomplete="off">
+    <mat-form-field appearance='outline' class="tp-full-width">
+
+      <mat-label>Full Name</mat-label>
+      <input matInput formControlName='full_name' pattern="[A-Za-z\s]+" [(ngModel)]=developers.full_name>
+      <mat-error *ngIf="developerForm.get('full_name').errors?.required">Full Name is Required</mat-error>
+      <mat-error *ngIf="developerForm.get('full_name').errors?.minlength">Full Name must be at least 5 characters</mat-error>
+      <mat-error *ngIf="developerForm.get('full_name').errors?.maxlength">Full Name should not have more than 20 characters</mat-error>
+      <mat-error *ngIf="developerForm.get('full_name').errors?.pattern">Numbers and Special characters are not allowed</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance='outline' class="tp-full-width">
+      <mat-label>Enter Email</mat-label>
+      <input matInput formControlName='email' [(ngModel)]=developers.email>
+      <mat-error *ngIf="developerForm.get('email').errors?.required">Email is Required</mat-error>
+      <mat-error *ngIf="developerForm.get('email').errors?.pattern">Email is invalid</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance='outline' class="tp-full-width">
+      <mat-label>Enter Password</mat-label>
+      <input matInput type="password" formControlName='password' [(ngModel)]=developers.password pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$]).{8,}">
+      <mat-error *ngIf="developerForm.get('password').errors?.required">Password is Required</mat-error>
+      <!-- <mat-error *ngIf="changePassword.get('new').errors?.minlength">It should contain alteast 8 characters</mat-error> -->
+      <mat-error *ngIf="developerForm.get('password').errors?.pattern">Must contain at least one number and one uppercase and lowercase letter and Special charaters<br></mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance='outline' class="tp-full-width">
+      <mat-label>Group</mat-label>
+      <mat-select formControlName='groupSelected' [(ngModel)]=developers.group>
+        <mat-option *ngFor='let name of group' [value]="name">{{name}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="developerForm.get('groupSelected').errors?.required">You must make a selection</mat-error>
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button class="btn-color">Add Developer</button>
+    <p *ngIf="message">{{message}}</p>
+
+  </form>
+

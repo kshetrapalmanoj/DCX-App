@@ -1,0 +1,140 @@
+<p>register works!</p>
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- <link rel="stylesheet" href="css/style.css" type="text/css"/> -->
+		<title>DCX Developer Directory</title>
+
+		<style>
+			#map {
+				width: 400px;
+				height: 250px;
+				float: left;
+			}
+		</style>
+
+		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	</head>
+
+	<body>
+		<div id="container">
+			<header>
+				<h1><span class="blueText">DCX</span> Developer Directory</h1>
+				<h2>Find A Developer <span class="whiteText">NOW</span></h2>
+			</header>
+
+		<nav id="menu">
+			<ul>
+				<li class="menuitem"><a href="index.html">Home</a></li>
+				<li class="menuitem"><a href="about.html">About Us</a></li>
+				<li class="menuitem"><a href="browse.html">Browse Developers</a></li>
+				<li class="menuitem"><a href="register.html">Register As Developer</a></li>
+				<li class="menuitem"><a href="contact.html">Contact Us</a></li>
+			</ul>
+		</nav>
+
+		<nav id="leftMenu">
+			<h3>Links</h3>
+			<ul>
+				<li><a href="browse.html">SEO</a></li>
+				<li><a href="browse.html">PHP</a></li>
+				<li><a href="browse.html">Ajax</a></li>
+				<li><a href="browse.html">jQuery</a></li>
+				<li><a href="browse.html">Web design</a></li>
+				<li><a href="browse.html">Web Programming</a></li>
+				<li><a href="browse.html">Content Creation</a></li>
+				<li><a href="browse.html">Internet Marketing</a></li>
+				<li><a href="browse.html">XHTML Templates</a></li>
+			</ul>
+		</nav>
+
+		<section>
+			<h3>Register As A Developer</h3>
+			<p>Please use this form to contact a member of our website team</p>
+			<!-- <form method="post" action="somescript.php"> -->
+				<!-- <p>
+					<label for="firstName">First Name:</label>
+					<input type="text" name="firstName" required>
+				</p>
+				<p>
+					<label for="lastName">Last Name:</label>
+					<input type="text" name="lastName" required>
+				</p>
+				<p>
+					<label for="email">Email:</label>
+					<input type="email" name="email" required>
+				</p> -->
+        <div class="form-group" ></div>
+				<form method="post" action="home.html" [formGroup]="angForm">
+					<div class="form-group">
+						<label>First Name:</label>
+						<input class="form-control" formControlName="fname" type="text" placeholder="Enter your first name" pattern="[A-Za-z]{3,}" maxlength="30">
+					</div><br>
+					<div *ngIf="angForm.controls['fname'].invalid && (angForm.controls['fname'].dirty || angForm.controls['fname'].touched)" class="alert alert-danger">
+						<div *ngIf="angForm.controls['fname'].errors.required">
+						 First Name is required.
+						</div>
+					</div><br>
+
+					<div class="form-group">
+						<label>Last Name:</label>
+						<input class="form-control" formControlName="lname" type="text" placeholder="Enter your last name" pattern="[A-Za-z]{3,}" maxlength="30">
+					</div><br>
+					<div *ngIf="angForm.controls['lname'].invalid && (angForm.controls['lname'].dirty || angForm.controls['lname'].touched)" class="alert alert-danger">
+						<div *ngIf="angForm.controls['lname'].errors.required">
+						 Last Name is required.
+						</div>
+
+					</div><br>
+					<div class="form-group">
+						<label>Email Address:</label>
+						<input class="form-control" formControlName="email" type="email" placeholder="Enter your email address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+					</div>
+					<div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
+						<div *ngIf="angForm.controls['email'].errors.required">
+						  Email is required.
+						</div>
+					</div><br>
+				<!-- <p>
+					<label for="location">Location:</label>
+					<div id="map"></div> -->
+
+				<!-- </p> -->
+				<!-- <div style="clear:both;"></div> -->
+        <div class="form-group">
+          <label>Upload Profile:</label>
+          <input class="form-control" formControlName="upload" type="file">
+        </div>
+        <div *ngIf="angForm.controls['upload'].invalid && (angForm.controls['upload'].dirty || angForm.controls['upload'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['upload'].errors.required">
+            Choose a file to upload.
+          </div>
+        </div><br>
+					 <!-- <label for="profile" required>Upload Profile:</label> -->
+					 <!-- <form action="/index.html"> -->
+						<!-- <input type="file" id="myFile" name="filename"> -->
+						<!-- <input type="submit" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success" > -->
+					  </form>
+				<!-- </p> -->
+				<div *ngIf="getMessage()">
+					<h3>Messages</h3>
+					<p *ngFor="let message of getMessage()">{{message}}</p>
+				<p>
+					<input type="submit" value="Register"  (click)="done()" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success">
+				</p>
+				<p><input type="reset" (click)="reset()" value="Reset" class="btn btn-warning"></p>
+				</div>
+
+			<br />
+
+
+
+	</section>
+
+	</div>
+	<div style="clear:both"></div>
+	<footer>
+		Copyright 2017. DCX Developer Directory.
+	</footer>
+	</body>
+</html>

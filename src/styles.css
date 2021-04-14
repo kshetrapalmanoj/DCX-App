@@ -1,0 +1,9 @@
+
+* {
+	margin: 0 auto 0 auto;
+	text-align: left;
+}
+.alert
+{
+    color: red;   /*manually added to show all error messages in red*/
+}

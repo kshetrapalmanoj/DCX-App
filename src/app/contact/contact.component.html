@@ -1,0 +1,214 @@
+<p>contact works!</p>
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- <link rel="stylesheet" href="css/style.css" type="text/css"/> -->
+		<title>DCX Developer Directory</title>
+	</head>
+
+	<body>
+		<div id="container">
+			<header>
+				<h1><span class="blueText">DCX</span> Developer Directory</h1>
+				<h2>Find A Developer <span class="whiteText">NOW</span></h2>
+			</header>
+
+			<nav id="menu">
+				<ul>
+					<li class="menuitem"><a href="index.html">Home</a></li>
+					<li class="menuitem"><a href="about.html">About Us</a></li>
+					<li class="menuitem"><a href="browse.html">Browse Developers</a></li>
+					<li class="menuitem"><a href="register.html">Register As Developer</a></li>
+					<li class="menuitem"><a href="contact.html">Contact Us</a></li>
+				</ul>
+			</nav>
+
+			<nav id="leftMenu">
+				<h3>Links</h3>
+				<ul>
+					<li><a href="browse.html">SEO</a></li>
+					<li><a href="browse.html">PHP</a></li>
+					<li><a href="browse.html">Ajax</a></li>
+					<li><a href="browse.html">jQuery</a></li>
+					<li><a href="browse.html">Web design</a></li>
+					<li><a href="browse.html">Web Programming</a></li>
+					<li><a href="browse.html">Content Creation</a></li>
+					<li><a href="browse.html">Internet Marketing</a></li>
+					<li><a href="browse.html">XHTML Templates</a></li>
+				</ul>
+			</nav>
+
+			<section>
+			    <h3>Contact Us</h3>
+				<div>Please use this form to contact a member of our website team</div><br>
+				<form method="post" action="home.html" [formGroup]="angForm">
+					<div class="form-group">
+						<label>Full Name:</label>
+						<input class="form-control" formControlName="name" type="text" placeholder="Enter your full name" pattern="[A-Za-z]{3,} [A-Za-z]{3,}" maxlength="30">
+					</div><br>
+					<div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+						<div *ngIf="angForm.controls['name'].errors.required">
+						 Full Name is required.
+						</div>
+					</div><br>
+					<!-- <p>
+						<label for="name">Full Name:</label>
+						<input type="text" name="name" class="form-control" required maxlength="30" pattern="[A-Za-z]{3,}">
+					</p> -->
+					<!-- <p>
+						<label for="email">Email Address: </label>
+						<input type="email" name="email" required>
+					</p> -->
+					<div class="form-group">
+						<label>Email Address:</label>
+						<input class="form-control" formControlName="email" type="email" placeholder="Enter your email address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+					</div>
+					<div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
+						<div *ngIf="angForm.controls['email'].errors.required">
+						  Email is required.
+						</div>
+					</div><br>
+					<!-- <p>
+						<label for="phone">Phone Number: </label>
+						<input type="tel" name="phone" required pattern="[0-9]{10}">
+					</p> -->
+					<div class="form-group">
+						<label>Phone Number:</label>
+						<input class="form-control" formControlName="phone" type="tel" placeholder="Enter your phone number" pattern="[0-9]{10}">
+					</div><br>
+					<div *ngIf="angForm.controls['phone'].invalid && (angForm.controls['phone'].dirty || angForm.controls['phone'].touched)" class="alert alert-danger">
+						<div *ngIf="angForm.controls['phone'].errors.required">
+						  Phone Number is required.
+						</div>
+					</div><br>
+					<!-- <p>
+						<label for="call">Best Time To Call: </label>
+						<input type="radio" name="time" value="morning" checked>Morning
+						<input type="radio" name="time" value="noon">Noon
+						<input type="radio" name="time" value="evening">Evening
+					</p> -->
+					<div class="form-group">
+						<label for="location">Location: </label>
+						<input list="location" class="form-control" formControlName="location">
+						<datalist id="location">
+							<option value="New York">
+							<option value="Miami">
+							<option value="Boston">
+						</datalist>
+					</div><br>
+					<div *ngIf="angForm.controls['location'].invalid && (angForm.controls['location'].dirty || angForm.controls['location'].touched)" class="alert alert-danger">
+						<div *ngIf="angForm.controls['location'].errors.required">
+						  Location is required.
+						</div>
+					</div>
+					<fieldset>
+						<legend>About Your Project</legend>
+						<!-- <p> -->
+							<!-- <script type="text/javascript">
+								function updateTextInput(val) {
+									document.getElementById('textInput').value=val;
+								}
+							</script> -->
+							<!-- <label for="budget">Budget: </label> -->
+							<!-- <input type="range" name="budget" min="100" max="10000" onchange="updateTextInput(this.value);">
+							<input type="text" id="textInput"> -->
+							<!-- <select type="list" name="budget">
+								<option>--Please Select--</option>
+								<option value="100-500">$100 - $500</option>
+								<option value="500-1000">$500 - $1000</option>
+								<option value="1000-2000">$1000 - $2000</option>
+								<option value="2000+">$2000+</option>
+								<option value="not sure">Not Sure</option>
+							</select>
+						</p> -->
+						<div class="form-group">
+							<label for="budget">Budget: </label>
+							<select class="form-control" formControlName="budget">
+								<!-- <option value="please select"selected>--Please Select--</option> -->
+								<option value="100-500">$100 - $500</option>
+								<option value="500-1000">$500 - $1000</option>
+								<option value="1000-2000">$1000 - $2000</option>
+								<option value="2000+">$2000+</option>
+								<option value="not sure">Not Sure</option>
+							</select>
+						</div><br>
+						<div *ngIf="angForm.controls['budget'].invalid && (angForm.controls['budget'].dirty || angForm.controls['budget'].touched)" class="alert alert-danger">
+							<div *ngIf="angForm.controls['budget'].errors.required">
+							  Budget is required.
+							</div>
+						</div>
+						<p>
+							<label for="call">Services Needed: (Check all that apply) </label>
+							<table>
+								<tr>
+									<td><input type="checkbox" name="services" value="html" required>html</td>
+									<td><input type="checkbox" name="services" value="php">PHP</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" name="services" value="asp">ASP</td>
+									<td><input type="checkbox" name="services" value="java">Java</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" name="services" value="c">C++</td>
+									<td><input type="checkbox" name="services" value="design">Design</td>
+								</tr>
+							</table>
+
+						<!-- <p>
+							<label for="website">Current Website:</label>
+							<input type="url" name="website" required>
+						</p> -->
+						<div class="form-group">
+							<label>Current Website:</label>
+							<input class="form-control" formControlName="website" type="url" placeholder="Enter current website" pattern=".*\.com\.*">
+						</div><br>
+						<div *ngIf="angForm.controls['website'].invalid && (angForm.controls['website'].dirty  || angForm.controls['website'].touched)" class="alert alert-danger">
+							<div *ngIf="angForm.controls['website'].errors.required">
+							  Website is required.
+							</div>
+						</div><br>
+
+						<p>
+							<label for="startDate">Start Date:</label>
+							<input type="date" name="startDate" required min="2021-04-12">
+						</p>
+						<p>
+							<label for="pages">Number of Pages:</label>
+							<input type="number" name="pages" min="0">
+						</p>
+						<p>
+							<label for="color">Main Website Color:</label>
+							<input type="color" name="color">
+						</p>
+
+
+
+					</fieldset>
+					<div *ngIf="getMessage()">
+						<h3>Messages</h3>
+						<p *ngFor="let message of getMessage()">{{message}}</p>
+					<input type="submit"  (click)="done()" value="Submit Query"
+							[disabled]="angForm.pristine || angForm.invalid" class="btn btn-success">
+							<input type="reset" (click)="reset()" value="Reset" class="btn btn-warning">
+					</div>
+
+
+				</form>
+
+	<br />
+
+
+
+
+
+  </section>
+
+
+		</div>
+		<div style="clear:both"></div>
+
+		<footer>
+			Copyright 2017. DCX Developer Directory.
+		</footer>
+	</body>
+</html>

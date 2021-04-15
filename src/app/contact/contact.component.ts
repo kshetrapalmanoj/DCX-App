@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { MessageService } from './../../message.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -11,7 +12,7 @@ export class ContactComponent implements OnInit {
 
 
   angForm: FormGroup;
-  constructor(private fb: FormBuilder,private messageservice:MessageService) {//dependency injection
+  constructor(private fb: FormBuilder,private messageservice:MessageService,private http:HttpClient) {//dependency injection
    this.createForm();
  }
   createForm() {
@@ -39,8 +40,11 @@ export class ContactComponent implements OnInit {
   done()
   {
     console.log(this.angForm.value);
+    this.http.post('http://localhost:3000/api/developer/register',this.angForm.value).subscribe((result)=>{
+      console.log(result);
     this.messageservice.addMessage('Data Submitted')
-  }
+  })
+}
   ngOnInit(): void {
     this.messageservice.addMessage('Welcome to Contact Page');
   }

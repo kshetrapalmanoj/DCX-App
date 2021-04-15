@@ -13,6 +13,7 @@ export class AddDeveloperComponent implements OnInit {
   developerForm:FormGroup;
   group=['A4','A5','B4'];
   message="";
+  submitted:boolean
 
   developers:developer={full_name:'',email:'',password:'',group:''};
 
@@ -23,11 +24,19 @@ export class AddDeveloperComponent implements OnInit {
 
     this.developerService.addDevelopers(this.developers).subscribe(data => {
       console.log(data);
-      this.message = "Developer Added Successfully";
+      this.message = "Developer Registered Successfully";
     },error=>{
       this.message = error.error.message;
-    });
+    }
+
+    );
+
   }
+  RegisterUser(){
+
+
+    this.submitted=true
+    }
 
   ngOnInit(): void {
     this.developerForm=this.fb.group({

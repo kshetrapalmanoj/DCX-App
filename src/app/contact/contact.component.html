@@ -20,6 +20,7 @@
 					<li class="menuitem"><a href="browse.html">Browse Developers</a></li>
 					<li class="menuitem"><a href="register.html">Register As Developer</a></li>
 					<li class="menuitem"><a href="contact.html">Contact Us</a></li>
+          <li><a routerLink='/login'>Logout</a></li>
 				</ul>
 			</nav>
 
@@ -41,7 +42,7 @@
 			<section>
 			    <h3>Contact Us</h3>
 				<div>Please use this form to contact a member of our website team</div><br>
-				<form method="post" action="home.html" [formGroup]="angForm">
+				<form method="post" [formGroup]="angForm">
 					<div class="form-group">
 						<label>Full Name:</label>
 						<input class="form-control" formControlName="name" type="text" placeholder="Enter your full name" pattern="[A-Za-z]{3,} [A-Za-z]{3,}" maxlength="30">

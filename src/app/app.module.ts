@@ -22,6 +22,9 @@ import { UpdateDeveloperComponent } from './developers/update-developers/update-
 import { DeleteDeveloperComponent } from './developers/delete-developer/delete-developer.component';
 import { GetDevelopersComponent } from './developers/get-developer/get-developers.component';
 import { ContactComponent } from './contact/contact.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import {MatTableModule} from '@angular/material/table';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -52,6 +55,9 @@ import { ContactComponent } from './contact/contact.component';
     MatButtonModule,
     MatSelectModule,
     HttpClientModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
+
 
   ],
   providers: [],

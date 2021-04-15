@@ -12,9 +12,15 @@ import {ActivatedRoute,Router} from '@angular/router';
 export class GetDevelopersComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,private router:Router,private developerService:DevelopersService) { }
+
   developers:developer[]=[];
+  dataSource = this.developers;
+  p:number=1
+  limit:number=5
+  total:number;
 
   getDevelopers():void{
+    // let offset=(p-1)*this.limit
     this.developerService.getDevelopers().subscribe((info)=>{
       this.developers = info.map((data)=>({
         full_name:data.full_name,

@@ -1,38 +1,40 @@
-<body style="background-color: #1995dc;">
-<div class="container" style="padding-top:5em" id="login-bg">
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-        <mat-card>
 
-      <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onSubmit()" class="tp-form" autocomplete="off">
-        <h3>Welcome to DCX Developer Directory</h3>
+.<body >
+  <div class="container" style="padding-top:5em" id="login-bg">
 
-        <div>
-          <mat-form-field appearance="outline" class="tp-full-width">
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="pat@example.com" formControlName="email" required type="email" placeholder="Enter your email">
-            <mat-error *ngIf = "loginForm.get('email').errors?.pattern">Email Id is Invalid</mat-error>
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field appearance="outline" class="tp-full-width">
-            <mat-label>Password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Enter your password">
-            <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-             </mat-icon>
-            <mat-error *ngIf="loginForm.get('password').errors?.required">Password is Required</mat-error>
-          </mat-form-field>
-        </div>
 
-        <mat-checkbox>Remember me</mat-checkbox>
-        <button type="submit" class="btn btn-lg btn-primary btn-block">Sign In</button>
+          <mat-card>
 
-      </form>
-      <p *ngIf="message" style="text-align: center;">{{message}}</p>
-      </mat-card>
+        <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onSubmit()" class="tp-form" autocomplete="off">
+          <h3>Welcome to DCX Developer Directory</h3>
+          <div><h4 *ngIf="message" style="text-align: center;">{{message}}</h4></div>
+          <div>
+            <mat-form-field appearance="outline" class="tp-full-width">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="pat@example.com" formControlName="email" required type="email" placeholder="Enter your email">
+              <mat-error *ngIf = "loginForm.get('email').errors?.pattern">Email Id is Invalid</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field appearance="outline" class="tp-full-width">
+              <mat-label>Password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Enter your password">
+              <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+               </mat-icon>
+              <mat-error *ngIf="loginForm.get('password').errors?.required">Password is Required</mat-error>
+            </mat-form-field>
+          </div>
+
+
+          <mat-checkbox>Remember me</mat-checkbox>
+          <button type="submit" class="btn btn-lg btn-primary btn-block">Sign In</button>
+
+        </form>
+
+        </mat-card>
+
 
     </div>
-  </div>
-</div>
-</body>
+
+  </body>

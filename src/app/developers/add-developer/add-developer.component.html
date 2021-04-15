@@ -30,6 +30,7 @@
 				<li class="menuitem"><a href="browse.html">Browse Developers</a></li>
 				<li class="menuitem"><a href="register.html">Register As Developer</a></li>
 				<li class="menuitem"><a href="contact.html">Contact Us</a></li>
+        <li><a routerLink='/login'>Logout</a></li>
 			</ul>
 		</nav>
 
@@ -65,7 +66,7 @@
 					<input type="email" name="email" required>
 				</p> -->
 
-        <form [formGroup]="developerForm" (ngSubmit)="developerForm.valid && onSubmit()" class="tp-form" style="text-align: center;" autocomplete="off">
+        <form [formGroup]="developerForm" (ngSubmit)="developerForm.valid && onSubmit()" class="tp-form" style="text-align: center;" autocomplete="off" [hidden]="submitted">
           <mat-form-field >
 
             <mat-label>Full Name</mat-label>
@@ -103,10 +104,12 @@
           </mat-form-field>
           <br>
 
-          <button type="submit" mat-raised-button class="btn-color" routerLink="/browse.html">Submit</button>
-          <h4 style="color: aqua;" *ngIf="message">{{message}}</h4>
+
+          <button type="submit" mat-raised-button class="btn-color" 	[disabled]="developerForm.pristine || developerForm.invalid">Submit</button>
+         <div align="center"><h4 style="color:blue;" *ngIf="message" align="center">{{message}}</h4></div>
       <button type="reset" mat-raised-button routerLink="/dashboard">Go Back</button>
         </form>
+
 
 	</section>
 

@@ -15,7 +15,7 @@ router.post('/register',async (req,res)=>{
 
     //creating new developer
     const developer = new Developer({
-        name:req.body.full_name,
+        full_name:req.body.full_name,
         email:req.body.email,
         password:hashedPassword,
         group:req.body.group
@@ -44,13 +44,13 @@ router.post('/login',async (req,res)=>{
 
     //checks developer exists or not
     const developer = await Developer.findOne({email:req.body.email});
-    if(!developer) return res.status(400).json({message:'Developer does not exist'});
+    if(!developer) return res.status(400).json({message:'Invalid Developer Email'});
 
     //checking password
     const validPassword = await bcrypt.compare(req.body.password,developer.password);
     if(!validPassword) return res.status(400).json({message:'Invalid password'});
 
-    const token = await jwt.sign({_id:developer._id},process.env.TOKEN_SECRET,{expiresIn:'5s'});
+    const token = await jwt.sign({_id:developer._id},process.env.TOKEN_SECRET,{expiresIn:'24h'});
     if(token) return res.status(200).json(token);
     console.log('Logged in')
 

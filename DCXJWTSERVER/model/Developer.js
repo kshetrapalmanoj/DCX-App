@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const developerScheme = new mongoose.Schema({
-    name:{
+    full_name:{
         type:String,
         required:true,
     },

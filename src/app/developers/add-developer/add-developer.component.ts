@@ -23,7 +23,7 @@ export class AddDeveloperComponent implements OnInit {
 
     this.developerService.addDevelopers(this.developers).subscribe(data => {
       console.log(data);
-      this.message = "Developer Added Sucessfully!";
+      this.message = "Developer Added Successfully";
     },error=>{
       this.message = error.error.message;
     });

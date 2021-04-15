@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['dashboard']);
 
       }, error => {
-        this.messageService = error.error.message;
+        this.message = error.error.message;
         // console.log(error);
       });
     }

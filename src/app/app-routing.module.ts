@@ -19,24 +19,20 @@ const routes: Routes = [
   { path: 'about.html', component: AboutComponent,
     children: [ ]
   },
-  { path: 'developers', component: DevelopersComponent,
-    children: [
-      { path: 'addDeveloper', component: AddDeveloperComponent },
-      { path: 'updateDeveloper', component: UpdateDeveloperComponent},
-      { path: 'getDeveloper',component: GetDevelopersComponent}
-    ]
-  },
+  { path: 'developers', component: UpdateDeveloperComponent},
+
   { path: 'login', component: LoginComponent },
-  { path: 'browse.html', component: BrowseComponent,
+  { path: 'browse.html', component: GetDevelopersComponent,
     children: [ ]
   },
-  { path: 'register.html', component: RegisterComponent},
+  // { path: 'register.html', component: RegisterComponent},
   { path: 'contact.html', component: ContactComponent,
     children: [ ]
   },
   { path: 'info.html', component: InfoComponent,
     children: [ ]
-  }
+  },
+  { path: 'register.html', component: AddDeveloperComponent}
 
 ]
 

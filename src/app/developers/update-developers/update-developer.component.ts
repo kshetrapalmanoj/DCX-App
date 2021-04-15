@@ -11,7 +11,7 @@ import {DevelopersService} from '../../developers.service';
 export class UpdateDeveloperComponent implements OnInit {
 
   developerForm:FormGroup;
-  group=['Admin','Registered'];
+  designation=['A4','A5',];
   message="";
 
   developers?:developer={full_name:'',email:'',password:'',group:''};

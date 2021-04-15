@@ -1,38 +1,121 @@
+<p>update works!</p>
+<!DOCTYPE html>
+<html manifest="developer.manifest">
+  <head>
+    <!-- <link rel="stylesheet" href="css/style.css" type="text/css" /> -->
+    <title>DCX Developer Directory</title>
 
-<section>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="list-group">
-          <a routerLink='/dashboard' class="list-group-item"><i class="glyphicon glyphicon-dashboard"></i>
-            Dashboard</a>
+    <script type="text/javascript">
+      function initStorage() {
+        function saveName() {
+          var name = document.getElementById("name");
+          localStorage.setItem("name", name.value);
+        }
+
+        function saveEmail() {
+          var email = document.getElementById("email");
+          localStorage.setItem("email", email.value);
+        }
+
+        saveName();
+        saveEmail();
+      }
+
+      function displayName() {
+        if (localStorage.getItem("name") != null) {
+          document.write("Welcome back " + localStorage.getItem("name"));
+        }
+      }
+
+      function showText() {
+        if (localStorage.getItem("email") == null) {
+          document.write("<p>Please enter your email address.</p>");
+        } else {
+          document.write(
+            "<p><strong>Subscribed Email: </strong>" +
+              localStorage.getItem("email") +
+              "</p>"
+          );
+        }
+      }
+
+      function clearAll() {
+        localStorage.clear();
+        window.location.reload();
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="container">
+      <header>
+        <h1><span class="blueText">DCX</span> Developer Directory</h1>
+        <h2>Find A Developer <span class="whiteText">NOW</span></h2>
+      </header>
+
+      <nav id="menu">
+        <ul>
+          <li class="menuitem"><a href="index.html" routerLink="/home.html">Home</a></li>
+          <li class="menuitem"><a href="about.html" routerLink="/about.html">About Us</a></li>
+          <li class="menuitem"><a href="browse.html"  routerLink="/browse.html">Browse Developers</a></li>
+          <li class="menuitem">
+            <a href="register.html" routerLink="/register.html">Register As Developer</a>
+          </li>
+          <li class="menuitem"><a href="contact.html"  routerLink="/contact.html">Contact Us</a></li>
+          <li><a routerLink='/login'>Logout</a></li>
+
+
+
+        </ul>
+        <div id="displayName">
+          <script>
+            displayName();
+          </script>
         </div>
-      </div>
-      <div class="col-md-8">
 
-        <div class="row">
-          <div class="col-md-6">
-            <h1 class="page-header"><i class="glyphicon glyphicon-user"></i> Developers</h1>
-          </div>
-          <div class="col-md-6">
-            <div class="btn-group actions" role="group" aria-label="...">
-              <a (click)="addDeveloper()" type="button" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i>
-                New</a>
-              <a (click)="updateDeveloper()" type="button" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i>
-                Edit</a>
-                <a (click)="getDeveloper()" type="button" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i>
-                Get details</a>
-              <!-- <a href="#" type="button" class="btn btn-default"><i class="glyphicon glyphicon-remove"></i> Delete</a> -->
-            </div>
-          </div>
-        </div>
+      </nav>
+      <aside>
+        <nav id="leftMenu">
+          <h3>Links</h3>
+          <ul>
+            <li><a href="browse.html">SEO</a></li>
+            <li><a href="browse.html">PHP</a></li>
+            <li><a href="browse.html">Ajax</a></li>
+            <li><a href="browse.html">jQuery</a></li>
+            <li><a href="browse.html">Web design</a></li>
+            <li><a href="browse.html">Web Programming</a></li>
+            <li><a href="browse.html">Content Creation</a></li>
+            <li><a href="browse.html">Internet Marketing</a></li>
+            <li><a href="browse.html">XHTML Templates</a></li>
+          </ul>
+          <br /><br />
+        </nav>
+      </aside>
+      <section>
+        <h2>Welcome to DCX Developer Directory!</h2>
 
-        <ol class="breadcrumb">
-          <li><a href="index.html">Dashboard</a></li>
-          <li class="active">Developers</li>
-        </ol>
-        <router-outlet></router-outlet>
-      </div>
+        <!-- <a (click)="addDeveloper()" type="button" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i>
+          New</a> -->
+        <a (click)="updateDeveloper()" type="button" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i>
+          <h1>Update Developer</h1></a>
+          <!-- <a (click)="getDeveloper()" type="button" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i>
+          Get details</a> -->
+        <!-- <a href="#" type="button" class="btn btn-default"><i class="glyphicon glyphicon-remove"></i> Delete</a> -->
+
+  <router-outlet></router-outlet>
+
+      </section>
     </div>
-  </div>
-</section>
+
+    <div style="clear: both"></div>
+
+    <footer>
+      Copyright 2017. DCX Developer Directory -
+      <a href="info.html" style="color: #ffffff">Info </a>
+    </footer>
+  </body>
+</html>
+
+
+
+

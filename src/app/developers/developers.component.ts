@@ -20,7 +20,7 @@ export class DevelopersComponent implements OnInit {
     this.router.navigate(['getDeveloper'],{relativeTo:this.route});
   }
   ngOnInit(): void {
-    this.getDeveloper()
+    // this.getDeveloper()
   }
 
 }

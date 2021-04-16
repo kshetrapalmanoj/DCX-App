@@ -19,11 +19,24 @@ const contactScheme = new mongoose.Schema({
     budget:{
       type:String,
       required:true
-  },
+    },
     website:{
       type:String,
       required:true
-},
+    },
+    startDate:{
+      type:String,
+      required:true
+    },
+    pages:{
+      type:String,
+      required:true
+    },
+    color:{
+      type:String,
+      required:true
+    }
+
 });
 
 module.exports  = mongoose.model('contacts',contactScheme);

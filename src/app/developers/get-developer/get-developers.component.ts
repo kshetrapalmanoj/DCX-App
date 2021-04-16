@@ -14,42 +14,37 @@ export class GetDevelopersComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,private router:Router,private developerService:DevelopersService,private http:HttpClient) { }
 
-  developers:any
+  developers:any=[]
 
-  p:number
- totalItems:any
- itemsPerPage:5
+  p:any
+  totalItems:any
+//  itemsPerPage:5
+  limit:number=5
 
-  getDevelopers(page):void{
-    // let offset=(p-1)*this.limit
-    const newurl=`http://localhost:3000/api/developer?page=${page}&size=${this.itemsPerPage}`
-    this.http.get<developer[]>(newurl).subscribe((info)=>{
-      // console.log(info)
-      this.developers = info.map((data)=>({
-        full_name:data.full_name,
-        email:data.email,
-        password:data.password,
-        group:data.group
-      }))
+  getDevelopers(p):void{
+    let offset=(p-1)*this.limit
+    // const newurl=`http://localhost:3000/api/developer/register/${offset}/${this.limit}`
+    this.developerService.getDevelopers(offset).subscribe((info)=>{
+      console.log(info)
+      // this.developers = info.map((data)=>({
+      //   full_name:data.full_name,
+      //   email:data.email,
+      //   password:data.password,
+      //   group:data.group
+      // }))
+      this.developers=info
     });
 
   }
-  getPage(page)
-  {
-    const newurl=`http://localhost:3000/api/developer?page=${page}&size=${this.itemsPerPage}`
+getdev(p1)
+{
+this.getDevelopers(p1)
+this.p=p1
+}
 
-    this.http.get<developer[]>(newurl).subscribe((info)=>{
-      this.developers = info.map((data)=>({
-        full_name:data.full_name,
-        email:data.email,
-        password:data.password,
-        group:data.group
-      }))
-    });
-  }
 
   ngOnInit(): void {
-    this.getDevelopers(2);
+    this.getDevelopers(1);
   }
 
   updateDeveloper():void{

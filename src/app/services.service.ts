@@ -9,12 +9,12 @@ import { HttpHeaders } from '@angular/common/http'
   providedIn: 'root'
 })
 export class ServicesService {
-  private mailApi = 'https://mailthis.to/manoj'
+  private Api = 'https://mailthis.to/manoj'
 
   constructor(private http: HttpClient) { }
 
   PostMessage(input: any) {
-    return this.http.post(this.mailApi, input, { responseType: 'text' })
+    return this.http.post(this.Api, input, { responseType: 'text' })
       .pipe(
         map(
           (response) => {

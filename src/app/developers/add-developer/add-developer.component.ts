@@ -5,13 +5,13 @@ import {DevelopersService} from '../../developers.service';
 
 
 @Component({
-  selector: 'app-add-user',
+  selector: 'app-add-developer',
   templateUrl: './add-developer.component.html',
   styleUrls: ['./add-developer.component.css']
 })
 export class AddDeveloperComponent implements OnInit {
   developerForm:FormGroup;
-  group=['A4','A5','B4'];
+  group=['Admin','Registered'];
   message=false;
   submitted:boolean
   message1=""

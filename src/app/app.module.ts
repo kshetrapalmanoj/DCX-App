@@ -25,7 +25,7 @@ import { ContactComponent } from './contact/contact.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {MatTableModule} from '@angular/material/table';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -40,6 +40,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     RegisterComponent,
     ContactComponent,
     AboutComponent,
+
+
 
   ],
 
@@ -59,7 +61,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HttpClientModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule
 
 
   ],

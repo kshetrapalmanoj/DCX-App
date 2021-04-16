@@ -50,6 +50,7 @@
 		</nav>
 
 		<section>
+      <div *ngIf="!message">
 			<h3>Register As A Developer</h3>
 			<div>Please use this form to contact a member of our website team</div>
 
@@ -66,7 +67,7 @@
 					<label for="email">Email:</label>
 					<input type="email" name="email" required>
 				</p> -->
-<div *ngIf="!message">
+
         <form [formGroup]="developerForm" (ngSubmit)="developerForm.valid && onSubmit()" class="tp-form" style="text-align: center;" autocomplete="off">
           <mat-form-field >
 
@@ -107,7 +108,7 @@
 
 
           <button type="submit" mat-raised-button class="btn-color" 	[disabled]="developerForm.pristine || developerForm.invalid">Submit</button>
-         <div align="center"><h4 style="color:blue;" *ngIf="message1" align="center">{{message1}}</h4></div>
+         <div align="center"><h4 style="color:blue;" *ngIf="message1" align="center">{{message1}}</h4></div><br>
       <button type="reset" mat-raised-button routerLink="/dashboard">Go Back</button>
         </form>
       </div><br>

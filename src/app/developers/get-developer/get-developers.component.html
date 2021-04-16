@@ -32,6 +32,7 @@
         <li class="menuitem"><a href="browse.html">Browse Developers</a></li>
         <li class="menuitem"><a href="register.html">Register As Developer</a></li>
         <li class="menuitem"><a href="contact.html">Contact Us</a></li>
+        <li><a routerLink='/login'>Logout</a></li>
       </ul>
     </nav>
 
@@ -52,7 +53,6 @@
 
     <section>
       <h3>Browse Developers</h3>
-
       <div class="panel-primary">
 
         <div class="table-responsive">
@@ -60,9 +60,9 @@
           <table mdbTable class="table table-striped table-hover">
 
             <caption>Developer List</caption>
-            <thead class="grey lighten-1 black-text">
+            <thead>
 
-              <tr scope="row">
+              <tr>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Group</th>
@@ -70,13 +70,13 @@
 
             </thead>
             <tr mdbTableCol
-              *ngFor="let m of developers|paginate:{itemsPerPage:6,currentPage:p,totaltotalItems:totalItems}">
+              *ngFor="let m of developers.result | paginate:{itemsPerPage:5,currentPage:p,totalItems:developers.no}">
               <td>{{m.full_name}}</td>
               <td>{{m.email}}</td>
               <td>{{m.group}}</td>
 
             </tr><br><br>
-            <pagination-controls (pageChange)="getPage(p=$event)"></pagination-controls>
+            <pagination-controls (pageChange)="getdev($event)"></pagination-controls>
           </table>
         </div>
       </div>

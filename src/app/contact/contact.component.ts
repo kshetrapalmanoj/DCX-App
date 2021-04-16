@@ -10,8 +10,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-
-  message=""
+message=false
+  // message=""
   angForm: FormGroup;
   constructor(private fb: FormBuilder,private messageservice:MessageService,private http:HttpClient, private contact: ServicesService) {//dependency injection
    this.createForm();
@@ -37,14 +37,16 @@ export class ContactComponent implements OnInit {
     .subscribe(response => {
       location.href = 'https://mailthis.to/confirm'
       console.log(response)
+
     }, error => {
       console.warn(error.responseText)
       console.log({ error })
     })
+    this.message=true;
 }
 
   ngOnInit(): void {
-    this.messageservice.addMessage('Welcome to Contact Page');
+    // this.messageservice.addMessage('Welcome to Contact Page');
   }
 
 }

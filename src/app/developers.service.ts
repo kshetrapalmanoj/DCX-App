@@ -25,14 +25,16 @@ export class DevelopersService {
     return this.http.put<developer>(this.url,u,this.httpOptions);
     }
 
-  // getDevelopers():Observable<developer[]>{
-  //   const newurl=`http://localhost:3000/api/developer?page=${0}&size=${this.itemsPerPage}`
-  //   return this.http.get<developer[]>(newurl,this.httpOptions);
-  // }
+
+  getDevelopers(offset):Observable<developer[]>{
+    const newurl=`http://localhost:3000/api/developer/register/${offset}`
+    return this.http.get<developer[]>(newurl,this.httpOptions);
+  }
   // getPage(page):Observable<developer[]>{
   //   const newurl=`http://localhost:3000/api/developer?page=${page}&size=${this.itemsPerPage}`
   //   return this.http.get<developer[]>(newurl,this.httpOptions);
   // }
+
 
   getName():Observable<any>{
     return this.http.get<any>(this.urlInfo,{params:new HttpParams().append('token',localStorage.getItem('token'))});

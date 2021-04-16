@@ -4,7 +4,7 @@ import {developer} from '../../developers';
 import {DevelopersService} from '../../developers.service';
 
 @Component({
-  selector: 'app-update-user',
+  selector: 'app-update-developer',
   templateUrl: './update-developer.component.html',
   styleUrls: ['./update-developer.component.css']
 })

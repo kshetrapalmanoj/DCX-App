@@ -13,6 +13,8 @@ import { BrowseComponent } from './browse/browse.component';
 import { ContactComponent } from './contact/contact.component';
 import { InfoComponent } from './info/info.component';
 import { GetDevelopersComponent } from './developers/get-developer/get-developers.component';
+import { AuthGuardService } from './auth-guard.service';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -20,10 +22,11 @@ const routes: Routes = [
   { path: 'about.html', component: AboutComponent,
     children: [ ]
   },
-  { path: 'developers', component: UpdateDeveloperComponent},
+  // { path: 'developers', component: UpdateDeveloperComponent},
+
 
   { path: 'login', component: LoginComponent },
-  { path: 'browse.html', component: GetDevelopersComponent,
+  { path: 'browse.html', component: GetDevelopersComponent,canActivate: [AuthGuardService], data: { expectedRole: 'Admin' },
     children: [ ]
   },
   // { path: 'register.html', component: RegisterComponent},
@@ -34,6 +37,8 @@ const routes: Routes = [
     children: [ ]
   },
   { path: 'register.html', component: AddDeveloperComponent},
+
+
 
 ]
 

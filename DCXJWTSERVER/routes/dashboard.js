@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 
 router.get('/data',verify,(req,res)=>{
     Developer.findById({_id:decodedData._id},(error,data)=>{
-        return res.status(200).json({full_name:data.full_name});
+        return res.status(200).json({full_name:data});
     });
 })
 let decodedData = "";

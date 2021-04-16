@@ -30,28 +30,16 @@ router.post('/register',async (req,res)=>{
     }
 });
 
-// router.get('/',async (req, res) => {
-//   try {let {page,size}=req.query;
-//   if(!page){
-//     page=1
-//   }
-//   if(!size)
-//   {
-//     size=5
-//   }
-//   const limit=parseInt(size);
-//   const skip=(page-1)*size;
+router.get('/register/:offset',async (req,res)=>{
+  const offset = parseInt(req.params.offset);
+  const data = await Developer.find().skip(offset).limit(5);
+  const count = await Developer.countDocuments();
+  if(!data) return res.status(400).json({message:"error"});
+  if(data) return res.status(200).json({result:data,no:count});
+
+});
 
 
-//   const developerSave=await Developer.find() .limit(limit).skip(skip)
-//        res.send(docs);
-//  } catch(err)
-//        {
-// res.sendStatus(400).send(error.message)
-//        }
-
-
-// })
 router.get('/', (req, res) => {
   Developer.find((err, docs) => {
       if (!err) { res.send(docs); }

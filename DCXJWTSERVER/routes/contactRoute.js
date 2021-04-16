@@ -11,7 +11,10 @@ router.post('/register',async (req,res)=>{
         phoneno:req.body.phoneno,
         location:req.body.location,
         budget:req.body.budget,
-        website:req.body.website
+        website:req.body.website,
+        startDate:req.body.startDate,
+        pages:req.body.pages,
+        color:req.body.color
     });
     try {
 

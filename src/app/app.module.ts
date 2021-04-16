@@ -26,6 +26,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import {MatTableModule} from '@angular/material/table';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     GetDevelopersComponent,
     RegisterComponent,
     ContactComponent,
-    AboutComponent
+    AboutComponent,
+
   ],
 
   imports: [
@@ -57,6 +59,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HttpClientModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
+    MatTableModule
 
 
   ],

@@ -1,3 +1,4 @@
+import { ServicesService } from './../services.service';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from './../../message.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,9 +11,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
 
-
+  message=""
   angForm: FormGroup;
-  constructor(private fb: FormBuilder,private messageservice:MessageService,private http:HttpClient) {//dependency injection
+  constructor(private fb: FormBuilder,private messageservice:MessageService,private http:HttpClient, private contact: ServicesService) {//dependency injection
    this.createForm();
  }
   createForm() {
@@ -22,29 +23,26 @@ export class ContactComponent implements OnInit {
       phone:['',Validators.required],
       location:['', Validators.required],
       website:['', Validators.required],
-      budget:['',Validators.required]
+      budget:['',Validators.required],
+      startDate:['',Validators.required],
+      pages:['',Validators.required],
+      color:['',Validators.required]
    });
  }
 
-  getMessage()
-  {
-    return this.messageservice.messages;
-  }
-  reset()
-  {
-    this.messageservice.clear()
 
-    this.messageservice.addMessage('Just cleared the message')
-    console.log('Cleared all the messages')
-  }
-  done()
-  {
-    console.log(this.angForm.value);
-    this.http.post('http://localhost:3000/api/developer/register',this.angForm.value).subscribe((result)=>{
-      console.log(result);
-    this.messageservice.addMessage('Data Submitted')
-  })
+ onSubmit(FormData) {
+  console.log(FormData)
+  this.contact.PostMessage(FormData)
+    .subscribe(response => {
+      location.href = 'https://mailthis.to/confirm'
+      console.log(response)
+    }, error => {
+      console.warn(error.responseText)
+      console.log({ error })
+    })
 }
+
   ngOnInit(): void {
     this.messageservice.addMessage('Welcome to Contact Page');
   }

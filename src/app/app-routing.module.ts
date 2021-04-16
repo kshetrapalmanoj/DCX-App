@@ -1,3 +1,4 @@
+
 import { AddDeveloperComponent } from './developers/add-developer/add-developer.component';
 import { RegisterComponent } from './register/register.component';
 import { AboutComponent } from './about/about.component';
@@ -32,7 +33,7 @@ const routes: Routes = [
   { path: 'info.html', component: InfoComponent,
     children: [ ]
   },
-  { path: 'register.html', component: AddDeveloperComponent}
+  { path: 'register.html', component: AddDeveloperComponent},
 
 ]
 

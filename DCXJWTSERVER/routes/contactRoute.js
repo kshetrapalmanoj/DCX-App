@@ -9,7 +9,9 @@ router.post('/register',async (req,res)=>{
         full_name:req.body.full_name,
         email:req.body.email,
         phoneno:req.body.phoneno,
-        location:req.body.location
+        location:req.body.location,
+        budget:req.body.budget,
+        website:req.body.website
     });
     try {
 
@@ -21,29 +23,12 @@ router.post('/register',async (req,res)=>{
     }
 });
 
-router.get('/',async (req, res) => {
-  try {let {page,size}=req.query;
-  if(!page){
-    page=1
-  }
-  if(!size)
-  {
-    size=5
-  }
-  const limit=parseInt(size);
-  const skip=(page-1)*size;
-
-
-  const developerSave=await Contact.find() .limit(limit).skip(skip)
-       res.send(docs);
- } catch(err)
-       {
-res.sendStatus(400).send(error.message)
-       }
-
-
-})
-
+router.get('/', (req, res) => {
+  Contact.find((err, docs) => {
+      if (!err) { res.send(docs); }
+      else { console.log('Error in Retrieving Data :' + JSON.stringify(err, undefined, 2)); }
+  });
+});
 
 
 

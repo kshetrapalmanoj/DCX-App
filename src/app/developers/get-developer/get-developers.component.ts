@@ -2,6 +2,7 @@ import {Component, OnInit } from '@angular/core';
 import {DevelopersService} from '../../developers.service';
 import {developer}  from '../../developers';
 import {ActivatedRoute,Router} from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -11,17 +12,33 @@ import {ActivatedRoute,Router} from '@angular/router';
 })
 export class GetDevelopersComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute,private router:Router,private developerService:DevelopersService) { }
+  constructor(private route:ActivatedRoute,private router:Router,private developerService:DevelopersService,private http:HttpClient) { }
 
-  developers:developer[]=[];
-  dataSource = this.developers;
-  p:number=1
-  limit:number=5
-  total:number;
+  developers:any
 
-  getDevelopers():void{
+  p:number
+ totalItems:any
+ itemsPerPage:5
+
+  getDevelopers(page):void{
     // let offset=(p-1)*this.limit
-    this.developerService.getDevelopers().subscribe((info)=>{
+    const newurl=`http://localhost:3000/api/developer?page=${page}&size=${this.itemsPerPage}`
+    this.http.get<developer[]>(newurl).subscribe((info)=>{
+      // console.log(info)
+      this.developers = info.map((data)=>({
+        full_name:data.full_name,
+        email:data.email,
+        password:data.password,
+        group:data.group
+      }))
+    });
+
+  }
+  getPage(page)
+  {
+    const newurl=`http://localhost:3000/api/developer?page=${page}&size=${this.itemsPerPage}`
+
+    this.http.get<developer[]>(newurl).subscribe((info)=>{
       this.developers = info.map((data)=>({
         full_name:data.full_name,
         email:data.email,
@@ -32,7 +49,7 @@ export class GetDevelopersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getDevelopers();
+    this.getDevelopers(2);
   }
 
   updateDeveloper():void{

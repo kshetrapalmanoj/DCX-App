@@ -1,93 +1,97 @@
 <p>register works!</p>
 <!DOCTYPE html>
 <html>
-	<head>
 
-		<title>DCX Developer Directory</title>
+<head>
+  <!-- <link rel="stylesheet" href="css/style.css" type="text/css"/> -->
+  <title>DCX Developer Directory</title>
 
-
-    <style>
-      .dev-table.th{
-          background-color: #1C47BE;
-      }
-      .dev-table.td{
-        background-color: cadetblue;
-      }
+  <style>
+    #map {
+      width: 400px;
+      height: 250px;
+      float: left;
+    }
 
   </style>
-	</head>
 
-	<body>
-		<div id="container">
-			<header>
-				<h1><span class="blueText">DCX</span> Developer Directory</h1>
-				<h2>Find A Developer <span class="whiteText">NOW</span></h2>
-			</header>
+  <!-- <script src="http://maps.google.com/maps/api/js?sensor=false"></script> -->
+</head>
 
-		<nav id="menu">
-			<ul>
-				<li class="menuitem"><a href="index.html">Home</a></li>
-				<li class="menuitem"><a href="about.html">About Us</a></li>
-				<li class="menuitem"><a href="browse.html">Browse Developers</a></li>
-				<li class="menuitem"><a href="register.html">Register As Developer</a></li>
-				<li class="menuitem"><a href="contact.html">Contact Us</a></li>
-        <li><a routerLink='/login'>Logout</a></li>
-			</ul>
-		</nav>
+<body>
+  <div id="container">
+    <header>
+      <h1><span class="blueText">DCX</span> Developer Directory</h1>
+      <h2>Find A Developer <span class="whiteText">NOW</span></h2>
+    </header>
 
-		<nav id="leftMenu">
-			<h3>Links</h3>
-			<ul>
-				<li><a href="browse.html">SEO</a></li>
-				<li><a href="browse.html">PHP</a></li>
-				<li><a href="browse.html">Ajax</a></li>
-				<li><a href="browse.html">jQuery</a></li>
-				<li><a href="browse.html">Web design</a></li>
-				<li><a href="browse.html">Web Programming</a></li>
-				<li><a href="browse.html">Content Creation</a></li>
-				<li><a href="browse.html">Internet Marketing</a></li>
-				<li><a href="browse.html">XHTML Templates</a></li>
-			</ul>
-		</nav>
+    <nav id="menu">
+      <ul>
+        <li class="menuitem"><a href="index.html">Home</a></li>
+        <li class="menuitem"><a href="about.html">About Us</a></li>
+        <li class="menuitem"><a href="browse.html">Browse Developers</a></li>
+        <li class="menuitem"><a href="register.html">Register As Developer</a></li>
+        <li class="menuitem"><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
 
-		<section>
-			<h3>Browse Developers</h3>
+    <nav id="leftMenu">
+      <h3>Links</h3>
+      <ul>
+        <li><a href="browse.html">SEO</a></li>
+        <li><a href="browse.html">PHP</a></li>
+        <li><a href="browse.html">Ajax</a></li>
+        <li><a href="browse.html">jQuery</a></li>
+        <li><a href="browse.html">Web design</a></li>
+        <li><a href="browse.html">Web Programming</a></li>
+        <li><a href="browse.html">Content Creation</a></li>
+        <li><a href="browse.html">Internet Marketing</a></li>
+        <li><a href="browse.html">XHTML Templates</a></li>
+      </ul>
+    </nav>
 
-  <table class="dev-table">
+    <section>
+      <h3>Browse Developers</h3>
 
-     <caption>Developer List</caption>
-<thead>
-       <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Group</th>
-      </tr>
+      <div class="panel-primary">
 
-    </thead>
-      <tbody>
-      <tr *ngFor="let d of developers|paginate:{itemsPerPage:5,currentPage:p};">
-          <td>{{d.full_name}}</td>
-          <td>{{d.email}}</td>
-          <td>{{d.group}}</td>
+        <div class="table-responsive">
 
-      </tr>
-    </tbody>
-    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+          <table mdbTable class="table table-striped table-hover">
 
-  </table>
+            <caption>Developer List</caption>
+            <thead class="grey lighten-1 black-text">
 
+              <tr scope="row">
+                <th>Name</th>
+                <th>Email</th>
+                <th>Group</th>
+              </tr>
 
-	</section>
+            </thead>
+            <tr mdbTableCol
+              *ngFor="let m of developers|paginate:{itemsPerPage:6,currentPage:p,totaltotalItems:totalItems}">
+              <td>{{m.full_name}}</td>
+              <td>{{m.email}}</td>
+              <td>{{m.group}}</td>
 
-	</div>
-	<div style="clear:both"></div>
+            </tr><br><br>
+            <pagination-controls (pageChange)="getPage(p=$event)"></pagination-controls>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <div style="clear:both"></div>
   <br>
   <br>
   <br>
   <br>
   <br>
-	<footer>
-		Copyright 2017. DCX Developer Directory.
-	</footer>
-	</body>
+  <footer>
+    Copyright 2017. DCX Developer Directory.
+  </footer>
+</body>
+
 </html>

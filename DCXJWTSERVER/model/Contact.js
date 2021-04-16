@@ -15,7 +15,15 @@ const contactScheme = new mongoose.Schema({
     location:{
         type:String,
         required:true
-    }
+    },
+    budget:{
+      type:String,
+      required:true
+  },
+    website:{
+      type:String,
+      required:true
+},
 });
 
 module.exports  = mongoose.model('contacts',contactScheme);

@@ -52,6 +52,7 @@
 		<section>
 			<h3>Register As A Developer</h3>
 			<div>Please use this form to contact a member of our website team</div>
+
 			<!-- <form method="post" action="somescript.php"> -->
 				<!-- <p>
 					<label for="firstName">First Name:</label>
@@ -65,8 +66,8 @@
 					<label for="email">Email:</label>
 					<input type="email" name="email" required>
 				</p> -->
-
-        <form [formGroup]="developerForm" (ngSubmit)="developerForm.valid && onSubmit()" class="tp-form" style="text-align: center;" autocomplete="off" [hidden]="submitted">
+<div *ngIf="!message">
+        <form [formGroup]="developerForm" (ngSubmit)="developerForm.valid && onSubmit()" class="tp-form" style="text-align: center;" autocomplete="off">
           <mat-form-field >
 
             <mat-label>Full Name</mat-label>
@@ -106,9 +107,14 @@
 
 
           <button type="submit" mat-raised-button class="btn-color" 	[disabled]="developerForm.pristine || developerForm.invalid">Submit</button>
-         <div align="center"><h4 style="color:blue;" *ngIf="message" align="center">{{message}}</h4></div>
+         <div align="center"><h4 style="color:blue;" *ngIf="message1" align="center">{{message1}}</h4></div>
       <button type="reset" mat-raised-button routerLink="/dashboard">Go Back</button>
         </form>
+      </div><br>
+      <div *ngIf="message" align="center">
+        <h3>Added Developer Successfully!</h3>
+        <button type="reset" mat-raised-button routerLink="/dashboard">Go Back</button>
+      </div >
 
 
 	</section>
@@ -125,3 +131,4 @@
 	</footer>
 	</body>
 </html>
+

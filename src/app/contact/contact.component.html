@@ -41,8 +41,10 @@
 
 			<section>
 			    <h3>Contact Us</h3>
+
+
 				<div>Please use this form to contact a member of our website team</div><br>
-				<form method="post" [formGroup]="angForm">
+				<form method="post" [formGroup]="angForm" action="https://mailthis.to/manoj" (ngSubmit)="onSubmit(angForm.value)">
 					<div class="form-group">
 						<label>Full Name:</label>
 						<input class="form-control" formControlName="name" type="text" placeholder="Enter your full name" pattern="[A-Za-z]{3,} [A-Za-z]{3,}" maxlength="30">
@@ -139,7 +141,8 @@
 							</div>
 						</div>
 						<p>
-							<label for="call">Services Needed: (Check all that apply) </label>
+
+							<!-- <label for="call">Services Needed: (Check all that apply) </label>
 							<table>
 								<tr>
 									<td><input type="checkbox" name="services" value="html" required>html</td>
@@ -153,7 +156,7 @@
 									<td><input type="checkbox" name="services" value="c">C++</td>
 									<td><input type="checkbox" name="services" value="design">Design</td>
 								</tr>
-							</table>
+							</table> -->
 
 						<!-- <p>
 							<label for="website">Current Website:</label>
@@ -169,29 +172,54 @@
 							</div>
 						</div><br>
 
-						<p>
+            <div class="form-group">
+              <label>Start Date:</label>
+              <input class="form-control" formControlName="startDate" type="date" required min="2021-04-16">
+            </div>
+            <div *ngIf="angForm.controls['startDate'].invalid && (angForm.controls['startDate'].dirty || angForm.controls['startDate'].touched)" class="alert alert-danger">
+              <div *ngIf="angForm.controls['startDate'].errors.required">
+                Start Date is required
+              </div>
+            </div><br>
+						<!-- <p>
 							<label for="startDate">Start Date:</label>
 							<input type="date" name="startDate" required min="2021-04-12">
-						</p>
-						<p>
+						</p> -->
+
+            <div class="form-group">
+              <label>Number of Pages:</label>
+              <input class="form-control" formControlName="pages" type="number" required>
+            </div>
+            <div *ngIf="angForm.controls['pages'].invalid && (angForm.controls['pages'].dirty || angForm.controls['pages'].touched)" class="alert alert-danger">
+              <div *ngIf="angForm.controls['pages'].errors.required">
+               This is required.
+              </div>
+            </div><br>
+						<!-- <p>
 							<label for="pages">Number of Pages:</label>
 							<input type="number" name="pages" min="0">
-						</p>
-						<p>
+						</p> -->
+            <div class="form-group">
+              <label>Main Website Color:</label>
+              <input class="form-control" formControlName="color" type="color" required>
+            </div>
+            <div *ngIf="angForm.controls['color'].invalid && (angForm.controls['color'].dirty || angForm.controls['color'].touched)" class="alert alert-danger">
+              <div *ngIf="angForm.controls['color'].errors.required">
+               This is required.
+              </div>
+            </div><br>
+						<!-- <p>
 							<label for="color">Main Website Color:</label>
 							<input type="color" name="color">
-						</p>
+						</p> -->
 
 
 
 					</fieldset>
-					<div *ngIf="getMessage()">
-						<h3>Messages</h3>
-						<p *ngFor="let message of getMessage()">{{message}}</p>
-					<input type="submit"  (click)="done()" value="Submit Query"
+
+					<input type="submit"   value="Submit Query"
 							[disabled]="angForm.pristine || angForm.invalid" class="btn btn-success">
-							<input type="reset" (click)="reset()" value="Reset" class="btn btn-warning">
-					</div>
+							<input type="reset"  value="Reset" class="btn btn-warning">
 
 
 				</form>

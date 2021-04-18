@@ -16,13 +16,13 @@ export class GetDevelopersComponent implements OnInit {
 
   developers:any=[]
 
-  p:any
+  p:number=1
   totalItems:any
 //  itemsPerPage:5
   limit:number=5
 
-  getDevelopers(p):void{
-    let offset=(p-1)*this.limit
+  getDevelopers(p1):void{
+    let offset=(p1-1)*this.limit
     // const newurl=`http://localhost:3000/api/developer/register/${offset}/${this.limit}`
     this.developerService.getDevelopers(offset).subscribe((info)=>{
       console.log(info)
@@ -34,21 +34,22 @@ export class GetDevelopersComponent implements OnInit {
       // }))
       this.developers=info
     });
+    this.totalItems=this.developers.no
 
   }
-getdev(p1)
-{
-this.getDevelopers(p1)
-this.p=p1
+
+  getdev(p1){
+  this.router.navigate(['browse.html/'+p1]);
+  this.getDevelopers(p1);
+  this.p=p1;
 }
 
 
   ngOnInit(): void {
-    this.getDevelopers(1);
+    this.p = parseInt(this.route.snapshot.paramMap.get('no'));
+    this.getDevelopers(this.p);
+
   }
 
-  updateDeveloper():void{
-    this.router.navigate(['updateDeveloper'],{relativeTo:this.route});
-  }
 
 }

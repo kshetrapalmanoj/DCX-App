@@ -2,48 +2,8 @@
 <!DOCTYPE html>
 <html manifest="developer.manifest">
   <head>
-    <!-- <link rel="stylesheet" href="css/style.css" type="text/css" /> -->
     <title>DCX Developer Directory</title>
 
-    <script type="text/javascript">
-      function initStorage() {
-        function saveName() {
-          var name = document.getElementById("name");
-          localStorage.setItem("name", name.value);
-        }
-
-        function saveEmail() {
-          var email = document.getElementById("email");
-          localStorage.setItem("email", email.value);
-        }
-
-        saveName();
-        saveEmail();
-      }
-
-      function displayName() {
-        if (localStorage.getItem("name") != null) {
-          document.write("Welcome back " + localStorage.getItem("name"));
-        }
-      }
-
-      function showText() {
-        if (localStorage.getItem("email") == null) {
-          document.write("<p>Please enter your email address.</p>");
-        } else {
-          document.write(
-            "<p><strong>Subscribed Email: </strong>" +
-              localStorage.getItem("email") +
-              "</p>"
-          );
-        }
-      }
-
-      function clearAll() {
-        localStorage.clear();
-        window.location.reload();
-      }
-    </script>
   </head>
 
   <body>
@@ -68,9 +28,6 @@
 
         </ul>
         <div id="displayName">
-          <script>
-            displayName();
-          </script>
         </div>
 
       </nav>
@@ -93,14 +50,6 @@
       </aside>
       <section>
         <h2>Welcome to DCX Developer Directory!</h2>
-
-        <!-- <a (click)="addDeveloper()" type="button" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i>
-          New</a> -->
-        <a (click)="updateDeveloper()" type="button" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i>
-          <h1>Update Developer</h1></a>
-          <!-- <a (click)="getDeveloper()" type="button" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i>
-          Get details</a> -->
-        <!-- <a href="#" type="button" class="btn btn-default"><i class="glyphicon glyphicon-remove"></i> Delete</a> -->
 
   <router-outlet></router-outlet>
 

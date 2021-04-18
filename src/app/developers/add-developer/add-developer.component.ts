@@ -11,7 +11,7 @@ import {DevelopersService} from '../../developers.service';
 })
 export class AddDeveloperComponent implements OnInit {
   developerForm:FormGroup;
-  group=['Admin','Registered'];
+  group=['Admin','Developer'];
   message=false;
   submitted:boolean
   message1=""
@@ -27,7 +27,6 @@ export class AddDeveloperComponent implements OnInit {
       console.log(data);
       this.message=true;
       this.message1="Developer Added successfully!"
-      // this.developerForm.reset()
     },error=>{
       this.message = error.error.message;
     },

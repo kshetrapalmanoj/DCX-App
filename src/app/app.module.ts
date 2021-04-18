@@ -18,14 +18,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { AddDeveloperComponent } from './developers/add-developer/add-developer.component';
-import { UpdateDeveloperComponent } from './developers/update-developers/update-developer.component';
-import { DeleteDeveloperComponent } from './developers/delete-developer/delete-developer.component';
 import { GetDevelopersComponent } from './developers/get-developer/get-developers.component';
 import { ContactComponent } from './contact/contact.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {MatTableModule} from '@angular/material/table';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatTabsModule} from '@angular/material/tabs';
+
 
 @NgModule({
   declarations: [
@@ -34,8 +34,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     DevelopersComponent,
     LoginComponent,
     AddDeveloperComponent,
-    UpdateDeveloperComponent,
-    DeleteDeveloperComponent,
     GetDevelopersComponent,
     RegisterComponent,
     ContactComponent,
@@ -62,7 +60,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     NgxPaginationModule,
     Ng2SearchPipeModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTabsModule
 
 
   ],

@@ -6,10 +6,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DevelopersComponent } from './developers/developers.component';
 import { LoginComponent } from './login/login.component';
-import { UpdateDeveloperComponent } from './developers/update-developers/update-developer.component';
-import { BrowseComponent } from './browse/browse.component';
 import { ContactComponent } from './contact/contact.component';
 import { InfoComponent } from './info/info.component';
 import { GetDevelopersComponent } from './developers/get-developer/get-developers.component';
@@ -22,21 +19,19 @@ const routes: Routes = [
   { path: 'about.html', component: AboutComponent,
     children: [ ]
   },
-  // { path: 'developers', component: UpdateDeveloperComponent},
-
-
   { path: 'login', component: LoginComponent },
   { path: 'browse.html', component: GetDevelopersComponent,canActivate: [AuthGuardService], data: { expectedRole: 'Admin' },
-    children: [ ]
+    children: [
+      { path: ':no', component: GetDevelopersComponent },]
   },
-  // { path: 'register.html', component: RegisterComponent},
   { path: 'contact.html', component: ContactComponent,
     children: [ ]
   },
-  { path: 'info.html', component: InfoComponent,
+  { path: 'info.html', component: InfoComponent,canActivate: [AuthGuardService], data: { expectedRole: 'Admin' },
     children: [ ]
   },
   { path: 'register.html', component: AddDeveloperComponent},
+  {path:'login',component: AddDeveloperComponent },
 
 
 

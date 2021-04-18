@@ -1,22 +1,22 @@
 
-.<body >
-  <div class="container" style="padding-top:5em" id="login-bg">
-
-
+<body >
+  <div class="container" style="padding-top:10em" id="login-bg">
           <mat-card>
 
         <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onSubmit()" class="tp-form" autocomplete="off">
           <h3>Welcome to DCX Developer Directory</h3>
           <div><h4 *ngIf="message" style="text-align: center;">{{message}}</h4></div>
-          <div>
+
+      <mat-tab-group>
+              <mat-tab label="SIGN IN">
             <mat-form-field appearance="outline" class="tp-full-width">
               <mat-label>Email</mat-label>
               <input matInput placeholder="pat@example.com" formControlName="email" required type="email" placeholder="Enter your email">
               <mat-error *ngIf = "loginForm.get('email').errors?.pattern">Email Id is Invalid</mat-error>
             </mat-form-field>
-          </div>
 
-          <div>
+
+
             <mat-form-field appearance="outline" class="tp-full-width">
               <mat-label>Password</mat-label>
               <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Enter your password">
@@ -24,17 +24,64 @@
                </mat-icon>
               <mat-error *ngIf="loginForm.get('password').errors?.required">Password is Required</mat-error>
             </mat-form-field>
-          </div>
 
 
           <mat-checkbox>Remember me</mat-checkbox>
-          <button type="submit" class="btn btn-lg btn-primary btn-block">Sign In</button>
+          <button type="submit" class="btn btn-lg btn-primary btn-block">Sign In</button><br>
 
+        </mat-tab>
+<mat-tab  label="SIGN UP">
+  <div *ngIf="!message1">
+  <form [formGroup]="developerForm" (ngSubmit)="developerForm.valid && onSubmit1()" class="tp-form" style="text-align: center;" autocomplete="off">
+    <mat-form-field >
+
+      <mat-label>Full Name</mat-label>
+      <input matInput formControlName='full_name' pattern="[A-Za-z\s]+" [(ngModel)]=developers.full_name placeholder="Enter your full name">
+      <mat-error *ngIf="developerForm.get('full_name').errors?.required">Full Name is Required</mat-error>
+      <mat-error *ngIf="developerForm.get('full_name').errors?.minlength">Full Name must be at least 5 characters</mat-error>
+      <mat-error *ngIf="developerForm.get('full_name').errors?.maxlength">Full Name should not have more than 30 characters</mat-error>
+      <mat-error *ngIf="developerForm.get('full_name').errors?.pattern">Numbers and Special characters are not allowed</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName='email' [(ngModel)]=developers.email placeholder="Enter your email">
+      <mat-error *ngIf="developerForm.get('email').errors?.required">Email is Required</mat-error>
+      <mat-error *ngIf="developerForm.get('email').errors?.pattern">Email is invalid</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName='password' [(ngModel)]=developers.password pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$]).{8,}" placeholder="Enter your password">
+      <mat-error *ngIf="developerForm.get('password').errors?.required">Password is Required</mat-error>
+      <mat-error *ngIf="developerForm.get('password').errors?.pattern">Must contain at least one number and one uppercase and lowercase letter and Special charaters<br></mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <mat-label>Group</mat-label>
+      <mat-select formControlName='groupSelected' [(ngModel)]=developers.group>
+        <mat-option *ngFor='let name of group' [value]="name">{{name}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="developerForm.get('groupSelected').errors?.required">You must make a selection</mat-error>
+    </mat-form-field>
+    <br>
+
+
+    <button type="submit" mat-raised-button class="btn-color" 	[disabled]="developerForm.pristine || developerForm.invalid">Submit</button>
+   <div align="center"><h4 style="color:blue;" *ngIf="message2" align="center">{{message2}}</h4></div><br>
+<button type="reset" mat-raised-button >Reset</button>
+  </form>
+  </div>
+  <div *ngIf="message1" align="center">
+    <h3>Added Developer Successfully!</h3>
+
+          </div >
+      </mat-tab>
+          </mat-tab-group>
         </form>
-
         </mat-card>
-
-
     </div>
-
   </body>
